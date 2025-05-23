@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Asistencia por fechas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <%- include('partials/menu') %>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Consultar asistencia por fechas</h1>
+
+    <!-- Formulario -->
+    <form method="GET" action="/asistencia" class="row g-3">
+      <div class="col-md-4">
+        <label for="fechaInicio" class="form-label">Fecha inicio</label>
+        <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
+      </div>
+      <div class="col-md-4">
+        <label for="fechaFin" class="form-label">Fecha fin</label>
+        <input type="date" class="form-control" id="fechaFin" name="fechaFin" required>
+      </div>
+      <div class="col-md-4 align-self-end">
+        <button type="submit" class="btn btn-primary w-100">Procesar</button>
+      </div>
+    </form>
+
+    <% if (asistencias && asistencias.length > 0) { %>
+      <hr class="my-4">
+      <h2 class="mb-3">Resultados</h2>
+      <table class="table table-striped table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Estudiante</th>
+            <th>Clase</th>
+            <th>Fecha</th>
+            <th>Presente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% asistencias.forEach(a => { %>
+            <tr>
+              <td><%= a.nombre %></td>
+              <td><%= a.dia %></td>
+              <td><%= a.hora %></td>
+              <td><%= a.presente ? 'Sí' : 'No' %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else if (typeof asistencias !== 'undefined') { %>
+      <div class="alert alert-warning mt-4">No se encontraron resultados.</div>
+    <% } %>
+
+  </div>
+</body>
+</html>
