@@ -1,36 +1,8 @@
-/**
- * @swagger
- * /:
- *   get:
- *     summary: Obtener todos los usuarios (vía procedimiento almacenado)
- *     tags:
- *       - Usuarios
- *     responses:
- *       200:
- *         description: Lista de usuarios obtenida correctamente
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                     example: 1
- *                   name:
- *                     type: string
- *                     example: Juan Pérez
- *                   email:
- *                     type: string
- *                     example: juan@example.com
- */
-
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const alumnoController = require('../controllers/alumnoController');
 
 // Endpoint principal
-router.get('/', userController.getUsers);
+router.get('/', alumnoController.getAlumnosPorInstrumento);
 
 module.exports = router;
