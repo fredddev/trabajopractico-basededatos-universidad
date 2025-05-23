@@ -1,0 +1,23 @@
+# Node modules (muy pesado, no debe subirse)
+node_modules/
+
+# Variables de entorno (credenciales y puertos)
+.env
+
+# Archivos de log
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# VSCode config (opcional, depende de tu equipo)
+.vscode/
+
+# Archivos temporales
+*.tmp
+*.swp
