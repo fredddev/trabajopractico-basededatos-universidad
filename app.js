@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/userRoutes');
+const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger/swagger');
 
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Rutas
-app.use('/', userRoutes);
+app.use('/', routes);
 
 app.listen(port, () => {
   console.log(`Servidor en http://localhost:${port}`);
